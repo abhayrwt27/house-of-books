@@ -1,0 +1,24 @@
+{% extends 'books/base.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <h2>❤️ My Wishlist</h2>
+    <hr>
+
+    {% if wishlist_items %}
+        {% for item in  wishlist_items %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h4>{{ item.book.title }}</h4>
+                <p><strong>Author: </strong>{{ item.book.author.name}}</p>
+                <p>₹ {{item.book.price}}</p>
+                <a href="{% url 'book_detail' item.book.id %}" class="btn btn-primary">View Book</a>
+                <a href="{% url 'toggle_wishlist' item.book.id %}" class="btn btn-danger">Remove</a>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>Your Wishlist is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}

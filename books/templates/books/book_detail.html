@@ -1,0 +1,74 @@
+{% extends 'books/base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            {% if book.cover_image %}
+                <img src="{{book.cover_image.url}}" class="img-fluid rounded shadow">
+            {% else %}
+                <div class="bg-light text-center p-5 border rounded">
+                    No Image Available
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <h2>{{book.title}}</h2>
+            <p>Average Rating: {{book.average_rating}} ({{book.review_count}} Reviews)</p>
+            <p><strong>Author: </strong>{{book.author}}</p>
+            <p><strong>Genre: </strong>{{book.genre}}</p>
+            <h3 class="text-success">₹{{book.price}}</h3>
+            <p>{{book.description}}</p>
+            {% if book.stock > 0 %}
+                <p class="text-success"><strong>In Stock {{book.stock}} left</strong></p>
+                <a href="{% url 'add_to_cart' book.id %}" class="btn btn-primary">Add to Cart</a>
+                <a href="{% url 'toggle_wishlist' book.id %}" class="btn btn-danger ms-2">❤️ Add to Wishlist</a>
+            {% else %}
+            <p class="text-danger"><strong>Out of Stock</strong></p>
+            <button class="btn btn-secondary"disabled>Out of Stock</button>
+            {% endif %}
+            <a href="{% url 'review_book' book.id %}" class="btn btn-warning">Write a Review</a>
+            <hr>
+            <h3>Customer Reviews</h3>
+            {% if reviews %}
+                {% for review in reviews %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5>{{review.user.username}}</h5>
+                            <p>
+                                Rating:
+                                {% for i in "12345" %}
+                                    {% if forloop.counter <= review.rating %}
+                                        ⭐
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
+
+                            <p>{{review.comment}}</p>
+                            <small>{{review.created_at}}</small>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                    <p>No reviews yet. Be the first to review this book!</p>
+            {% endif %}
+
+            <a href="/" class="btn btn-outline-dark ms-2">Back to Home</a>
+        </div>
+    </div>
+    
+    <h3 class="mt-5">You May Also Like</h3>
+    <div class="row">
+        {% for recommended_book in recommended_books %}
+            {% include 'books/book_card.html' with book=recommended_book %}
+        {% empty %}
+            <div class="col-12">
+                <div class="alert alert-warning text-center">
+                    <p>No similar books available.</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

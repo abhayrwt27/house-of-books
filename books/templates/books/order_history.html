@@ -1,0 +1,39 @@
+{% extends "books/base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <h2>My Orders</h2>
+    
+    {% if orders %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Items</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>
+                    <a href="{% url 'order_detail' order.id %}">Order #{{order.id}}</a>
+                    </td>
+                    <th>{{order.order_date}}</th>
+                    <th>₹{{order.total_amount}}</th>
+                    <th>{{order.status}}</th>
+                    <th>{{order.total_items}} Items</th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
+            <h4>You haven't placed any orders yet.</h4>
+        {% endif %}
+
+</div>
+{% endblock %}
