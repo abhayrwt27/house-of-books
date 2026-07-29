@@ -1,0 +1,28 @@
+#Environment variables
+.env
+
+#Database
+db.sqlite3
+
+#Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+#Virtual Environment
+djanglearn/
+venv/
+env/
+.venv/
+
+#Django
+staticfiles/
+
+#VS Code
+.vscode/
+
+#Operating system files
+.DS_Store
+Thumbs.db
+
+*.log
