@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import ReviewForm
 from django.db.models import Q
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 
 def home(request):
@@ -25,9 +26,12 @@ def home(request):
     else:
         books = Book.objects.all()
 
+    paginator = Paginator(books, 9)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
     return render(request, "books/home.html",
                   {
-                      "books": books,
+                      "page_obj": page_obj,
                       "recommendations": recommendations,
                   })
 

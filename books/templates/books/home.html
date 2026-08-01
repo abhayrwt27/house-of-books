@@ -11,7 +11,7 @@
     <div class="container mt-5">
         <h2 class="text-center mb-4">Featured Books</h2>
         <div class="row">
-            {% for book in books %}
+            {% for book in page_obj %}
                 {% include "books/book_card.html" %}
 
                 {% empty %}
@@ -48,4 +48,20 @@
             </div>
         </div>
     </div>
+
+    <!-- Page navigation buttons -->
+    <div class="d-flex justify-content-center mt-4">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="btn btn-outline-primary me-2">First</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-primary me-2">Previous</a>
+        {% endif %}
+        <span class="btn btn-secondary">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages}}
+        </span>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-primary ms-2">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-primary ms-2">Last</a>
+        {% endif %}
+    </div>
+    
 {% endblock %}
