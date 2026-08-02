@@ -2,11 +2,20 @@
 {% block content %}
 
     <!-- Hero Section -->
-    <div class="container mt-5 text-center">
-        <h1 class="display-4">Welcome to House of Books</h1>
-        <p class="lead">Discover your next favourite book from thousands of titles.</p>
-        <a href="#" class="btn btn-primary btn-lg">Browse Books</a>
-    </div>
+    <section class="hero-section">
+        <div class="hero-left">
+            <h1>Discover Your Next Favourite Book</h1>
+            <p>
+                Explore thousands of books from the world's most celebrated authors.
+            </p>
+            <a href="#" class="hero-button">Browse Books</a>
+        </div>
+        
+        <div class="hero-right">
+            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1200" alt="Books"> 
+        </div>
+        
+    </section>
 
     <div class="container mt-5">
         <h2 class="text-center mb-4">Featured Books</h2>
@@ -43,7 +52,9 @@
                     </div>
                 </div>
                 {% empty %}
-                <p>No recommendations available</p>
+                <div class="col-12">
+                    <p class="text-center">No recommendations available</p>
+                </div>
                 {% endfor %}
             </div>
         </div>

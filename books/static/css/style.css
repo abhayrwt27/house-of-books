@@ -1,0 +1,109 @@
+.top-bar{
+    background-color: #1f1f1f;
+    color: white;
+    padding: 8px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.left-side{
+    font-weight: 500;
+}
+
+.right-side{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.right-side a{
+    color: white;
+    text-decoration: none;
+}
+
+.right-side a:hover{
+    color: #ffc107;
+}
+
+body{
+    background-color: #f5f2eb;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.custom-navbar{
+    background-color: #3e2723;
+}
+
+.navbar-brand{
+    color: white !important;
+    font-size: 30px;
+}
+
+.nav-link{
+    color: white !important;
+}
+
+.nav-link:hover{
+    color: #d4af37 !important;
+}
+
+.btn-warning{
+    background-color: #d4af37;
+    border: none;
+}
+
+.card{
+    transition: 0.3s;
+}
+
+.car:hover{
+    transform: translateY(-8px);
+}
+
+.hero-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff8e7;
+    border-radius: 20px;
+    padding: 80px;
+    gap: 50px;
+    margin: 40px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.hero-left{
+    flex: 1;
+}
+
+.hero-right{
+    flex: 1;
+}
+
+.hero-right img{
+    width: 80%;
+    float: right;
+    border-radius: 20px;
+}
+
+.hero-left h1{
+    font-size: 50px;
+    color: #3e2723;
+}
+
+.hero-left p{
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.hero-button{
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    background-color: #3e2723;
+    color: white;
+}
