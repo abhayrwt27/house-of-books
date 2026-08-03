@@ -1,0 +1,21 @@
+{% extends 'books/base.html' %}
+{% block content %}
+
+<div class="authors-container">
+    <h1 class="authors-title">&#x270d Meet Our Authors</h1>
+    <div class="authors-grid">
+        {% for author in authors %}
+            <div class="author-card">
+                <div class="author-image">
+                    Author image
+                </div>
+                <h3>{{ author.name }}</h3>
+                <p>Explore books written by this author.</p>
+            </div>
+        {% empty %}
+            <p>No authors available.</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

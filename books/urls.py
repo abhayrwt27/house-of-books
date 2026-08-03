@@ -18,4 +18,5 @@ urlpatterns = [
     path("wishlist/", views.wishlist, name="wishlist"),
     path("categories/", views.categories, name="categories"),
     path("categories/<int:genre_id>/", views.genre_books, name="genre_books",),
+    path("authors/", views.authors, name="authors"),
 ]

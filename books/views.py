@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Book, Cart, CartItem, Order, OrderItem, Review, Wishlist, Genre
+from .models import Book, Cart, CartItem, Order, OrderItem, Review, Wishlist, Genre, Author
 from django.contrib.auth.decorators import login_required
 from .forms import ReviewForm
 from django.db.models import Q
@@ -195,4 +195,11 @@ def genre_books(request, genre_id):
     }
 
     return render(request, "books/genre_books.html", context)
+
+def authors(request):
+    authors = Author.objects.all()
+
+    context = {"authors" : authors}
+
+    return render(request, "books/authors.html", context)
 
