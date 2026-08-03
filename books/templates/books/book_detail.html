@@ -5,34 +5,39 @@
         <!-- LEFT PAGE -->
         <div class="book-left">
             {% if book.cover_image %}
-                <img src="{{book.cover_image.url}}" class="book-cover">
+                <img src="{{book.cover_image.url}}" class="book-cover" alt="{{ book.title }}">
             {% else %}
                 <div class="no-image">
                     No Image Available
                 </div>
             {% endif %}
-            <h1 class="book-title">{{book.title}}</h1>
-            <p>Average Rating: {{book.average_rating}} ({{book.review_count}} Reviews)</p>
-            <p><strong>Author: </strong>{{book.author}}</p>
-            <p><strong>Genre: </strong>{{book.genre}}</p>
-            <h3 class="price">₹{{book.price}}</h3>
-            <p>{{book.description}}</p>
-            {% if book.stock > 0 %}
-                <p class="stock">In Stock {{book.stock}} left</p>
-                <a href="{% url 'add_to_cart' book.id %}" class="btn btn-primary">Add to Cart</a>
-                <a href="{% url 'toggle_wishlist' book.id %}" class="btn btn-danger ms-2">❤️ Add to Wishlist</a>
-            {% else %}
-                <p class="text-danger"><strong>Out of Stock</strong></p>
-                <button class="btn btn-secondary"disabled>Out of Stock</button>
-            {% endif %}
+            <div class="book-information">
+                <h1 class="book-title">{{book.title}}</h1>
+                <p class="book-rating">Average Rating: ⭐{{book.average_rating}} ({{book.review_count}} Reviews)</p>
+                <p><strong>Author: </strong>{{book.author}}</p>
+                <p><strong>Genre: </strong>{{book.genre}}</p>
+                <h2 class="book-price">₹{{book.price}}</h2>
+                <p class="book-description">{{book.description}}</p>
+                {% if book.stock > 0 %}
+                    <p class="stock">In Stock {{book.stock}} left</p>
+                    <div class="book-buttons">
+                        <a href="{% url 'add_to_cart' book.id %}" class="btn btn-primary">Add to Cart</a>
+                        <a href="{% url 'toggle_wishlist' book.id %}" class="btn btn-danger ms-2">❤️ Add to Wishlist</a>
+                    </div>
+                {% else %}
+                    <p class="text-danger"><strong>Out of Stock</strong></p>
+                    <button class="btn btn-secondary"disabled>Out of Stock</button>
+                {% endif %}
+            </div>
         </div>
 
         <!-- RIGHT PAGE -->
          <div class="book-right">
+            <h2 class="author-heading">AUTHOR</h2>
             <div class="author-image">
                 author-image
             </div>
-            <h2>{{book.author}}</h2>
+            <h3>{{ book.author }}</h3>
             <p>Author biography will appear here.</p>
             <a href="{% url 'review_book' book.id %}" class="btn btn-warning">Write a Review</a>
             <a href="/" class="btn btn-outline-dark">Back</a>
@@ -44,20 +49,22 @@
         <h3>Customer Reviews</h3>
         {% if reviews %}
             {% for review in reviews %}
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5>{{review.user.username}}</h5>
-                        <p>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-user">
+                            {{review.user.username}}
+                        </div>
+                        <div>
                             Rating:
                             {% for i in "12345" %}
                                 {% if forloop.counter <= review.rating %}
                                     ⭐
                                 {% endif %}
                             {% endfor %}
-                        </p
-                        <p>{{review.comment}}</p>
-                        <small>{{review.created_at}}</small>
+                        </div>
                     </div>
+                        <div class="review-body">{{review.comment}}</div>
+                        <div class="review-date">{{review.created_at}}</div>
                 </div>
             {% endfor %}
         {% else %}
@@ -68,16 +75,22 @@
 
     <!-- RECOMMENDATIONS -->
     <div class="recommendations">
-        <h3 class="mt-5">You May Also Like</h3>
-        <div class="row">
+        <h3 class="recommendation-title">📚 You May Also Like</h3>
+        <div class="recommendation-container">
             {% for recommended_book in recommended_books %}
-                {% include 'books/book_card.html' with book=recommended_book %}
-            {% empty %}
-                <div class="col-12">
-                    <div class="alert alert-warning text-center">
-                        <p>No similar books available.</p>
-                    </div>
+                <div class="recommendation-card">
+                    {% if recommended_book.cover_image %}
+                        <img src="{{ recommended_book.cover_image.url }}">
+                    {% else %}
+                        <div class="recommendation-placeholder">No Image</div>
+                    {% endif %}
+                    <h5>{{ recommended_book.title }}</h5>
+                    <p>{{ recommended_book.author }}</p>
+                    <p class="recommendation-price">₹ {{recommended_book.price}}</p>
+                    <a href="{% url 'book_detail' recommended_book.id %}" class="btn btn-outline-dark">View Details</a>    
                 </div>
+            {% empty %}
+                <p>No recommendations available</p>
             {% endfor %}
         </div>
     </div>    
