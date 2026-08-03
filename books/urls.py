@@ -19,4 +19,5 @@ urlpatterns = [
     path("categories/", views.categories, name="categories"),
     path("categories/<int:genre_id>/", views.genre_books, name="genre_books",),
     path("authors/", views.authors, name="authors"),
+    path("about/", views.about, name="about"),
 ]

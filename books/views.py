@@ -203,3 +203,5 @@ def authors(request):
 
     return render(request, "books/authors.html", context)
 
+def about(request):
+    return render(request, "books/about.html")
