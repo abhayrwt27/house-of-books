@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Book, Cart, CartItem, Order, OrderItem, Review, Wishlist
+from .models import Book, Cart, CartItem, Order, OrderItem, Review, Wishlist, Genre
 from django.contrib.auth.decorators import login_required
 from .forms import ReviewForm
 from django.db.models import Q
@@ -177,3 +177,22 @@ def wishlist(request):
     wishlist_items = Wishlist.objects.filter(user=request.user).select_related("book")
 
     return render(request, "books/wishlist.html",{"wishlist_items": wishlist_items,},)
+
+def categories(request):
+    genres = Genre.objects.all()
+
+    context = {"genres" : genres}
+
+    return render(request, "books/categories.html", context)
+
+def genre_books(request, genre_id):
+    genre = get_object_or_404(Genre, id = genre_id)
+    books = Book.objects.filter(genre=genre)
+
+    context = {
+        "genre" : genre,
+        "books" : books,
+    }
+
+    return render(request, "books/genre_books.html", context)
+

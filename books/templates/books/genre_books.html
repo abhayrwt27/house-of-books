@@ -1,0 +1,15 @@
+{% extends 'books/base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+    <h1>{{ genre.name }}</h1>
+    <div class="row">
+        {% for book in books %}
+            {% include "books/book_card.html" %}
+        {% empty %}
+            <p>No books found.</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

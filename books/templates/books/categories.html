@@ -1,0 +1,22 @@
+{% extends 'books/base.html' %}
+{% block content %}
+
+<div class="categories-container">
+    <h1 class="categories-title">📚 Book Categories</h1>
+    <p class="categories-subtitle">Find books from your favourite genres.</p>
+    <div class="categories-grid">
+        {% for genre in genres %}
+        <a href="{% url 'genre_books' genre.id %}" class="category-link">
+            <div class="category-card">
+                <div class="category-icon">📖</div>
+                    <h3>{{ genre.name }}</h3>
+                    <p>Explore books from this category.</p>
+            </div>
+        </a>
+        {% empty %}
+            <p>No categories available.</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

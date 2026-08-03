@@ -16,4 +16,6 @@ urlpatterns = [
     path("book/<int:book_id>/review/", views.review_book, name="review_book",),
     path("book/<int:book_id>/wishlist/", views.toggle_wishlist, name="toggle_wishlist"),
     path("wishlist/", views.wishlist, name="wishlist"),
+    path("categories/", views.categories, name="categories"),
+    path("categories/<int:genre_id>/", views.genre_books, name="genre_books",),
 ]
