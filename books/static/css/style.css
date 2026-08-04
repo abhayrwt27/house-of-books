@@ -521,3 +521,46 @@ body{
     background-color: white;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
+
+/* --------------------------- FOOTER --------------------------- */
+
+.footer{
+    background-color: #111827;
+    color: white;
+    padding: 50px 0;
+}
+
+.footer h3, .footer h5{
+    margin-bottom: 15px;
+}
+
+.footer a{
+    color: #d1d5db;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.footer a:hover{
+    color: #facc15;
+}
+
+.footer hr{
+    border-color: #374151;
+}
+
+/* ---------------------- MOBILE RESPONSIVE ------------------- */
+
+@media screen and (max-width: 768px){
+    .footer{
+        padding: 40px 15px;
+    }
+
+    .footer h2{
+        font-size: 24px;
+    }
+
+    .footer-contact p{
+        font-size: 14px;
+    }
+}

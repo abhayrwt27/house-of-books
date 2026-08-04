@@ -105,6 +105,45 @@
     {% block content %}
     {% endblock %}
 
+    <!-- FOOTER -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>House of Books</h3>
+                    <p>Every book is a new adventure.</p>
+                </div>
+
+                <div class="col-md-2">
+                    <h5>Quick Links</h5>
+                    <a href="/">Home</a><br>
+                    <a href="{% url 'categories' %}">Categories</a><br>
+                    <a href="{% url 'authors' %}">Authors</a><br>
+                    <a href="{% url 'about' %}">About Us</a>
+                </div>
+
+                <div class="col-md-3">
+                    <h5>Categories</h5>
+                    <p>Fiction</p>
+                    <p>Fantasy</p>
+                    <p>Romance</p>
+                    <p>Mystery</p>
+                </div>
+
+                <div class="col-md-3">
+                    <h5>Contact Us</h5>
+                    <p>📍 Uttarakhand, India</p>
+                    <p>📧 support@houseofbooks@gmail.com</p>
+                    <p>📞 +91 XXXXX XXXXX</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <p class="text-center">© 2026 House of Books</p>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
