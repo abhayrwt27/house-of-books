@@ -615,6 +615,102 @@ body{
     gap: 10px;
 }
 
+/* -------------------------- CHECKOUT PAGE -------------------- */
+
+.checkout-container{
+    max-width: 1300px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.checkout-heading{
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.checkout-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.sticky-note{
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.shipping-note{
+    background-color: #fff7a8;
+    transform: rotate(2deg);
+}
+
+.order-note{
+    background-color: #d6f7d6;
+    transform: rotate(2deg);
+}
+
+.payment-note{
+    background-color: #ffd6e7;
+    margin-top: 40px;
+}
+
+.payment-option{
+    display: inline-flex;
+    align-items: center;
+    margin-right: 30px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.payment-option input{
+    margin-right: 8px;
+    transform: scale(1.3);
+}
+
+.input-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.input-group label{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-group input, .input-group textarea{
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.book-item{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.total-price{
+    display: flex;
+    justify-content: space-between;
+}
+
+.place-order-btn{
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: #212529;
+    color: white;
+    margin-top: 20px;
+}
+
+.place-order-btn:hover{
+    opacity: 0.9;
+}
+
 /* --------------------------- FOOTER --------------------------- */
 
 .footer{
@@ -897,6 +993,14 @@ body{
 
     .profile-buttons .btn{
         width: 100%;
+    }
+
+    .checkout-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .shipping-note, .order-note{
+        transform: rotate(0deg);
     }
 
     .footer{

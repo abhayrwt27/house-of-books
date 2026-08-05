@@ -98,23 +98,28 @@ def checkout(request):
 
     if not cart_items.exists():
         return redirect("cart")
-    
-    order = Order.objects.create(
-        user=request.user,
-        total_amount=cart.total,
-        status="Pending"
-    )
 
-    for item in cart_items:
-        OrderItem.objects.create(
-            order=order,
-            book=item.book,
-            quantity=item.quantity,
-            price=item.book.price,
+    if request.method == "POST":
+        order = Order.objects.create(
+            user=request.user,
+            total_amount=cart.total,
+            status="Pending"
+        )
+
+        for item in cart_items:
+            OrderItem.objects.create(
+                order=order,
+                book=item.book,
+                quantity=item.quantity,
+                price=item.book.price,
+        )
+
+        cart_items.delete()
+        return redirect("order_success")
+
+    return render(
+        request, "books/checkout.html", {"cart": cart, "cart_items": cart_items,},
     )
-        
-    cart_items.delete()
-    return redirect("order_success")
 
 @login_required
 def order_success(request):
