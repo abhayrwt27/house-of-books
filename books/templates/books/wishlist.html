@@ -7,7 +7,7 @@
 
     {% if wishlist_items %}
         {% for item in  wishlist_items %}
-        <div class="card mb-3">
+        <div class="card wishlist-card mb-3">
             <div class="card-body">
                 <h4>{{ item.book.title }}</h4>
                 <p><strong>Author: </strong>{{ item.book.author.name}}</p>

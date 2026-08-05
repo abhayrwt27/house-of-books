@@ -55,10 +55,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'order_history' %}">My Orders</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <form method="post" action="{% url 'logout' %}" class="d-inline">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-link nav-link border-0 bg-transparent">Logout</button>
+                            <button type="submit" class="btn btn-link nav-link border-0 bg-transparent mx-auto">Logout</button>
                         </form>
                     </li>
                 
@@ -75,7 +75,7 @@
                     </li>
                 </ul>
             
-                <form class="d-flex" method="GET" action="/">
+                <form class="d-flex mobile-search" method="GET" action="/">
                     <input 
                         class="form-control me-2"
                         type="search"
