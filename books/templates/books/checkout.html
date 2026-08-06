@@ -28,21 +28,21 @@
 
                 <div class="input-group">
                     <label>Phone Number</label>
-                    <input type="text">
+                    <input type="text" name="phone_number">
                 </div>
 
                 <div class="input-group">
                     <label>Address</label>
-                    <textarea rows="4"></textarea>
+                    <textarea rows="4" name="address"></textarea>
                 </div>
 
                 <div class="input-group">
                     <label>City</label>
-                    <input type="text">
+                    <input type="text" name="city">
                 </div>
                 <div class="input-group">
                     <label>PIN Code</label>
-                    <input type="text">
+                    <input type="text" class="pin_code">
                 </div>
         </div>
 
@@ -80,16 +80,16 @@
 
         <div class="payment-option">
             <input type="radio"
-                   name="payment"
-                   value="cod"
+                   name="payment_method"
+                   value="COD"
                    checked>
             <label>Cash on Delivery</label>
         </div>
 
         <div class="payment-option">
             <input type="radio"
-                   name="payment"
-                   value="razorpay">
+                   name="payment_method"
+                   value="Razorpay">
             <label>Razorpay</label>
         </div>
 

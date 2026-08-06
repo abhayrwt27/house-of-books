@@ -75,6 +75,10 @@ class Order(models.Model):
     order_date = models.DateTimeField(auto_now_add=True)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="Pending")
+    payment_method = models.CharField(max_length=50, default="COD")
+    payment_status = models.CharField(max_length=50, default="Pending")
+    shipping_address = models.TextField(blank=True, null=True)
+    phone_number = models.CharField(max_length=15, blank=True, null=True)
 
     @property
     def total_items(self):

@@ -100,10 +100,22 @@ def checkout(request):
         return redirect("cart")
 
     if request.method == "POST":
+
+        address = request.POST.get("address")
+        city = request.POST.get("city")
+        pin_code = request.POST.get("pin_code")
+        phone_number = request.POST.get("phone_number")
+        payment_method = request.POST.get("payment_method")
+        shipping_address = f"{address}, {city}, {pin_code}"
+
         order = Order.objects.create(
             user=request.user,
             total_amount=cart.total,
-            status="Pending"
+            status="Pending",
+            shipping_address=shipping_address,
+            phone_number=phone_number,
+            payment_method=payment_method,
+            payment_status="Pending",
         )
 
         for item in cart_items:
