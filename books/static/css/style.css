@@ -738,6 +738,123 @@ body{
     border-color: #374151;
 }
 
+/* ------------------------ 404 ERROR PAGE -------------------- */
+.hob-error-container{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #fdf6e3, #f8edd8);
+}
+
+/* Ground */
+.hob-error-container::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background-color: #6b4f35;
+}
+
+/* Book */
+.hob-book{
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    width: 130px;
+    height: 170px;
+    transform: translateX(-50%);
+    z-index: 3;
+}
+
+/* Front cover */
+.hob-book-cover-front{
+    position: absolute;
+    width: 130px;
+    height: 170px;
+    background-color: #6b4f35;
+    border-radius: 8px;
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.25);
+    z-index: 3; 
+}
+
+/* Pages */
+.hob-book-pages{
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 114px;
+    height: 154px;
+    background-color: #fffef7;
+    border-radius: 4px;
+    z-index: 2;
+}
+
+/* Back cover */
+.hob-book-cover-back{
+    position: absolute;
+    width: 130px;
+    height: 170px;
+    background-color: #533b26;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+/* Paper */
+.hob-paper{
+    position: absolute;
+    left: 50%;
+    bottom: 130px;
+    transform: translateX(-50%);
+    width: 320px;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #fffef8; 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    text-align: center;
+    opacity: 0;
+    z-index: 2;
+}
+
+/* Heading */
+.hob-paper h1{
+    font-size: 70px;
+    margin-bottom: 15;
+    color: #5b3d1c;
+}
+
+.hob-paper p{
+    color: #444;
+    line-height: 1.5;
+}
+
+/* Subtitle */
+.hob-subtitle{
+    margin-top: 10px;
+    color: #666;
+}
+
+/* Buttons */
+.hob-buttons{
+    margin-top: 20px;
+}
+
+.hob-button{
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    background-color: #6b4f35;
+    transition: 0.3s ease;
+}
+
+.hob-button:hover{
+    background-color: #4d3825;
+}
+
 /* ---------------------- MOBILE RESPONSIVE ------------------- */
 
 @media (max-width: 992px) {
@@ -1001,6 +1118,18 @@ body{
 
     .shipping-note, .order-note{
         transform: rotate(0deg);
+    }
+
+    .hob-book-cover{
+        font-size: 70px;
+    }
+
+    .hob-paper{
+        width: 90%;
+    }
+
+    .hob-paper h1{
+        font-size: 50px;
     }
 
     .footer{
