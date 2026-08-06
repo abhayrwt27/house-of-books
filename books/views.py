@@ -18,7 +18,10 @@ def home(request):
             )
         searched_book = books.first()
         if searched_book:
-            recommendations = Book.objects.filter(genre=searched_book.genre).exclude(id=searched_book.id)
+            same_genre = Book.objects.filter(genre=searched_book.genre).exclude(id=searched_book.id)
+            same_author = Book.objects.filter(author=searched_book.author).exclude(id=searched_book.id)
+            top_rated = Book.objects.order_by("-average_rating").exclude(id=searched_book.id)
+            recommendations = (same_genre | same_author | top_rated).distinct()[:4]
         else:
             #No book found
             recommendations = Book.objects.all()[:4]
