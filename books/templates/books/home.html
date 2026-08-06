@@ -21,6 +21,28 @@
 
     <div id="book-section" class="container mt-5">
         <h2 class="text-center mb-4">Featured Books</h2>
+
+        <div class="d-flex justify-content-end mb-4">
+            <form method="GET">
+                <select name="sort" class="form-select" onchange="this.form.submit()">
+                    <option value="">Sort by</option>
+                    <option value="price_low">Price: Low to High</option>
+                    <option value="price_high">Price: High to Low</option>
+                    <option value="rating">Price: Highest Rated</option>
+                    <option value="title">Alphabetical Order</option>
+                </select>
+            </form>
+            
+            <form method="GET">
+                <select name="genre" class="form-select" onchange="this.form.submit()">
+                    <option value="">All Genres</option>
+                    {% for genre in genres %}
+                        <option value="{{ genre.id }}">{{ genre.name }}</option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+
         <div class="row">
             {% for book in page_obj %}
                 {% include "books/book_card.html" %}

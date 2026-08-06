@@ -26,6 +26,20 @@ def home(request):
     else:
         books = Book.objects.all()
 
+        sort_by = request.GET.get("sort")
+        if sort_by == "price_low":
+            books = books.order_by("price")
+        elif sort_by == "price_high":
+            books = books.order_by("-price")
+        elif sort_by == "rating":
+            books = books.order_by("-average_rating")
+        elif sort_by == "title":
+            books = books.order_by("title")
+
+        genre_id = request.GET.get("genre")
+        if genre_id:
+            books = books.filter(genre_id = genre_id)
+
     paginator = Paginator(books, 9)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
@@ -33,6 +47,7 @@ def home(request):
                   {
                       "page_obj": page_obj,
                       "recommendations": recommendations,
+                      "genres": Genre.objects.all(),
                   })
 
 @login_required
