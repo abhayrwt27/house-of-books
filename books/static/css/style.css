@@ -738,121 +738,110 @@ body{
     border-color: #374151;
 }
 
-/* ------------------------ 404 ERROR PAGE -------------------- */
-.hob-error-container{
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background: linear-gradient(to bottom, #fdf6e3, #f8edd8);
+/* ===================================== */
+/* 404 PAGE */
+/* ===================================== */
+
+.hob-error-body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #f8f2e8;
+
+    font-family: "Poppins", sans-serif;
 }
 
-/* Ground */
-.hob-error-container::after{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 6px;
-    background-color: #6b4f35;
-}
+.hob-error-container {
+    width: 90%;
+    max-width: 650px;
 
-/* Book */
-.hob-book{
-    position: absolute;
-    left: 50%;
-    bottom: 20px;
-    width: 130px;
-    height: 170px;
-    transform: translateX(-50%);
-    z-index: 3;
-}
-
-/* Front cover */
-.hob-book-cover-front{
-    position: absolute;
-    width: 130px;
-    height: 170px;
-    background-color: #6b4f35;
-    border-radius: 8px;
-    box-shadow: 4px 4px 15px rgba(0,0,0,0.25);
-    z-index: 3; 
-}
-
-/* Pages */
-.hob-book-pages{
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    width: 114px;
-    height: 154px;
-    background-color: #fffef7;
-    border-radius: 4px;
-    z-index: 2;
-}
-
-/* Back cover */
-.hob-book-cover-back{
-    position: absolute;
-    width: 130px;
-    height: 170px;
-    background-color: #533b26;
-    border-radius: 8px;
-    z-index: 1;
-}
-
-/* Paper */
-.hob-paper{
-    position: absolute;
-    left: 50%;
-    bottom: 130px;
-    transform: translateX(-50%);
-    width: 320px;
-    padding: 25px;
-    border-radius: 10px;
-    background-color: #fffef8; 
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     text-align: center;
-    opacity: 0;
-    z-index: 2;
+
+    padding: 50px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.5);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
 }
 
-/* Heading */
-.hob-paper h1{
-    font-size: 70px;
-    margin-bottom: 15;
+.hob-error-code {
+    font-family: "Playfair Display", serif;
+
+    font-size: 90px;
+
     color: #5b3d1c;
+
+    margin-bottom: 10px;
 }
 
-.hob-paper p{
-    color: #444;
-    line-height: 1.5;
+.hob-error-title {
+    font-family: "Playfair Display", serif;
+
+    font-size: 36px;
+
+    color: #3f2d1d;
+
+    margin-bottom: 20px;
 }
 
-/* Subtitle */
-.hob-subtitle{
-    margin-top: 10px;
-    color: #666;
+.hob-error-text {
+    color: #6b6b6b;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    margin-bottom: 30px;
 }
 
-/* Buttons */
-.hob-buttons{
-    margin-top: 20px;
+.hob-book {
+    font-size: 90px;
+
+    margin-bottom: 35px;
+
+    animation: floatBook 3s ease-in-out infinite;
 }
 
-.hob-button{
-    display: inline-block;
-    padding: 12px 25px;
-    border-radius: 8px;
+.hob-button {
     text-decoration: none;
+
+    background-color: #5b3d1c;
+
     color: white;
-    background-color: #6b4f35;
+
+    padding: 14px 28px;
+
+    border-radius: 10px;
+
     transition: 0.3s ease;
 }
 
-.hob-button:hover{
-    background-color: #4d3825;
+.hob-button:hover {
+    background-color: #3d2818;
+}
+
+@keyframes floatBook {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 /* ---------------------- MOBILE RESPONSIVE ------------------- */
