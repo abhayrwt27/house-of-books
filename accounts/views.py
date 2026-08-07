@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from books.models import Order, Review
 from django.contrib.auth import login, update_session_auth_hash
-from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.forms import PasswordChangeForm, AuthenticationForm
 from django.contrib import messages
 
 
@@ -25,7 +25,7 @@ def register(request):
     })
 
 class CustomLoginView(LoginView):
-    template_name = "accounts/login.html"
+    template_name = "accounts/auth.html"
 
 class CustomLogoutView(LogoutView):
     next_page = reverse_lazy("home")
@@ -69,3 +69,33 @@ def change_password(request):
         form = PasswordChangeForm(request.user)
 
     return render(request, "accounts/change_password.html", {"form": form})
+
+def auth_view(request):
+    login_form = AuthenticationForm()
+    register_form = RegisterForm()
+
+    active_form = "login"
+    if request.method == "POST":
+        if "register" in request.POST:
+            active_form = "register"
+            register_form = RegisterForm(request.POST)
+            if register_form.is_valid():
+                user = register_form.save()
+                login(request, user)
+                return redirect("home")
+            
+        elif "login" in request.POST:
+            active_form = "login"
+            login_form = AuthenticationForm(request,data=request.POST,)
+            if login_form.is_valid():
+                login(request,login_form.get_user())
+                return redirect("home")
+
+    return render(
+        request, "accounts/auth.html",
+        {
+            "login_form": login_form,
+            "register_form": register_form,
+            "active_form": active_form,
+        },
+    )
