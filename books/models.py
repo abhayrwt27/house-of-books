@@ -12,7 +12,7 @@ class Genre(models.Model):
 
 class Author(models.Model):
     name = models.CharField(max_length=100)
-    photo = models.ImageField(upload_to='authors/', blank=True)
+    photo = models.ImageField(upload_to='authors/', blank=True, null=True)
     biography = models.TextField(blank=True)
 
     def __str__(self):

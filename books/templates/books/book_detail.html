@@ -34,11 +34,19 @@
         <!-- RIGHT PAGE -->
          <div class="book-right">
             <h2 class="author-heading">AUTHOR</h2>
-            <div class="author-image">
-                author-image
+            <div class="book-author-image">
+                {% if book.author.photo %}
+                    <img src="{{ book.author.photo.url }}" alt="{{ book.author.name }}">
+                {% else %}
+                    <div class="book-author-image-placeholder">Author image not available</div>
+                {% endif %}
             </div>
-            <h3>{{ book.author }}</h3>
-            <p>Author biography will appear here.</p>
+            <h2>{{ book.author }}</h2>
+            {% if book.author.biography %}
+                <p class="author-biography">{{ book.author.biography }}</p>
+            {% else %}
+                <p class="author-biography">Biography not Available</p>
+            {% endif %}
             <a href="{% url 'review_book' book.id %}" class="btn btn-warning">Write a Review</a>
             <a href="{% url 'home' %}" class="btn btn-outline-dark">Back</a>
         </div>

@@ -49,10 +49,16 @@
     </div>
 </div>
 <script src="{% static 'auth.js' %}">
-    let activeForm = "{{ active_form }}";
-    if(activeForm === "register"){
-        showRegister();
-    }
+    document.addEventListener("DOMContentLoaded", function() {
+        let activeForm = "{{ active_form }}";
+        if(activeForm === "register"){
+            showRegister();
+        }
+        else{
+            showLogin();
+        }
+    });
+    
 </script>
 </body>
 </html>

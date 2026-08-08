@@ -207,6 +207,7 @@ body{
 }
 
 .book-left, .book-right{
+    box-sizing: border-box;
     width: 50%;
     padding: 40px;
 }
@@ -220,13 +221,15 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding: 40px;
     background: #fffdf8;
     text-align: center;
+    box-sizing: border-box;
 }
 
-.book-right h3{
-    margin-top: 20px;
+.book-right h2{
+    margin: 0 0 25px 0;
     text-align: center;
 }
 
@@ -236,10 +239,8 @@ body{
 }
 
 .book-right img{
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    object-fit: cover;
+    width: 220px;
+    height: 220px;
 }
 
 /* -------------- BOOK IMAGE --------------------- */
@@ -275,16 +276,52 @@ body{
 }
 
 
-.author-image{
-    width: 150px;
-    height: 150px;
-    margin: auto;
-    border-radius: 50%;
-    background: #dddddd;
+.book-author-image{
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 20px;
+    background: #ddd;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 50px;
+    font-size: 15px;
+    text-align: center;
+    flex-shrink: 0;
+
+}
+
+.book-author-image img{
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+
+.book-author-image-placeholder{
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 1px solid #aaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.4;
+    box-sizing: border-box;
+    margin: 0 auto 20px;
+    flex-shrink: 0;
+}
+
+.author-biography{
+    min-height: 120px;
+    max-width: 480px;
+    margin: 18px auto 28px;
+    font-size: 15px;
+    line-height: 1.8;
+    text-align: center;
 }
 
 .book-information .book-price{
@@ -496,18 +533,29 @@ body{
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-.author-image{
-    width: 80px;
-    height: 80px;
-    margin: auto;
-    margin-bottom: 20px;
+.author-profile-image{
+    width: 180px;
+    height: 180px;
+    margin: 15px auto;
+    overflow: hidden;
     border-radius: 20px;
     background: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 35px;
+    font-size: 25px;
+    color: rgba(0,0,0,0.6);
+    text-align: center;
 }
+
+.author-profile-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
 
 /* ----------------------  ABOUT US PAGE ----------------- */
 

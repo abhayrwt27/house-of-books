@@ -6,8 +6,12 @@
     <div class="authors-grid">
         {% for author in authors %}
             <div class="author-card">
-                <div class="author-image">
-                    Author image
+                <div class="author-profile-image">
+                    {% if author.photo %}
+                        <img src="{{ author.photo.url }}" alt="{{ author.name }}" class="author-image">
+                    {% else %}
+                        <div class="author-profile-image-placeholder">Author image not available</div>
+                    {% endif %}
                 </div>
                 <h3>{{ author.name }}</h3>
                 <p>Explore books written by this author.</p>
